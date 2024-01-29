@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .pin-container {
+      text-align: center;
+    }
+
+    .display {
+      margin-bottom: 20px;
+    }
+
+    .pin-pad button {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Pin Pad System</title>
+</head>
+<body>
+
+<div class="pin-container">
+  <div class="display">
+    <p id="pin-display"></p>
+  </div>
+  <div class="pin-pad">
+    <button onclick="appendToPin(1)">1</button>
+    <button onclick="appendToPin(2)">2</button>
+    <button onclick="appendToPin(3)">3</button>
+    <button onclick="appendToPin(4)">4</button>
+    <button onclick="appendToPin(5)">5</button>
+    <button onclick="appendToPin(6)">6</button>
+    <button onclick="appendToPin(7)">7</button>
+    <button onclick="appendToPin(8)">8</button>
+    <button onclick="appendToPin(9)">9</button>
+    <button onclick="clearPin()">C</button>
+    <button onclick="appendToPin(0)">0</button>
+    <button onclick="submitPin()">Enter</button>
+  </div>
+</div>
+
+<script>
+  let enteredPin = '';
+
+  function appendToPin(number) {
+    enteredPin += number;
+    updatePinDisplay();
+  }
+
+  function clearPin() {
+    enteredPin = '';
+    updatePinDisplay();
+  }
+
+  function submitPin() {
+    // Replace '1234' with your desired correct pin
+    const correctPin = '1234';
+
+    if (enteredPin === correctPin) {
+      alert('Correct PIN! Initiating action...');
+      // You can replace the alert with any action you want to perform on correct pin entry
+    } else {
+      alert('Incorrect PIN. Try again.');
+      clearPin();
+    }
+  }
+
+  function updatePinDisplay() {
+    document.getElementById('pin-display').innerText = '*'.repeat(enteredPin.length);
+  }
+</script>
+</body>
+</html>
